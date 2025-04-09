@@ -1,0 +1,406 @@
+:root {
+  --primary-dark: #1c1c1c;
+  --accent-dark: #f4c542;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  color-scheme: dark;
+  font-family: 'Trebuchet MS', sans-serif;
+  background-color: #1c1c1c;
+  color: #f0e6d2;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-repeat: repeat;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  font-family: 'Georgia', serif;
+  color: #f4c542;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.access-screen {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+}
+
+input[type="text"] {
+  padding: 0.75rem;
+  margin: 1rem auto;
+  display: block;
+  width: 80%;
+  font-size: 1.1rem;
+  border: 1px solid #f4c542;
+  background-color: #333;
+  color: #f0e6d2;
+  border-radius: 8px;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #f4c542;
+  border: none;
+  border-radius: 8px;
+  color: #1c1c1c;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e0b424;
+}
+
+button:disabled {
+  background-color: #777;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin: 0.5rem 0;
+}
+
+footer {
+  margin-top: 3rem;
+  padding: 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  color: #ccc;
+}
+
+ul.sponsors {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+ul.sponsors li {
+  background: rgba(0,0,0,0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.map-container {
+  margin-top: 2rem;
+  border: 3px solid #f4c542;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #000;
+  background: #2a2a2a;
+}
+
+.team-dashboard, .admin-dashboard, .public-display {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 3px solid #8B5A2B;
+  box-shadow: 0 0 15px rgba(0,0,0,0.7);
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.team-logo {
+  width: 60px;
+  height: 60px;
+  background-color: #f4c542;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #1c1c1c;
+}
+
+.team-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-box {
+  background: rgba(0,0,0,0.5);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f4c542;
+}
+
+.admin-hint {
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.admin-hint code {
+  background: rgba(0,0,0,0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.photo-item {
+  border: 2px solid #f4c542;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.photo-item:hover {
+  transform: translateY(-5px);
+}
+
+.photo-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.photo-info {
+  padding: 0.5rem;
+}
+
+.photo-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.photo-date {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #222;
+  color: #eee;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+th {
+  background: #444;
+  color: #f4c542;
+}
+
+.team-card {
+  background: rgba(0,0,0,0.5);
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  transition: transform 0.3s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-rank {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background-color: #f4c542;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #444;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #f4c542;
+  border-radius: 4px;
+}
+
+.wood-button {
+  background-color: #8B5A2B;
+  color: #f0e6d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+}
+
+.wood-button:hover {
+  background-color: #a67c52;
+  transform: translateY(-2px);
+}
+
+.gold-button {
+  background-color: #f4c542;
+  color: #1c1c1c;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.gold-button:hover {
+  background-color: #e0b424;
+  transform: translateY(-2px);
+}
+
+.challenge-item {
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.challenge-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.challenge-photo {
+  background-color: #3b82f6;
+}
+
+.challenge-task {
+  background-color: #ef4444;
+}
+
+.challenge-info h4 {
+  margin: 0 0 0.25rem 0;
+}
+
+.challenge-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: #f4c542;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: opacity 0.2s;
+}
+
+.icon-button:hover {
+  opacity: 0.8;
+}
+
+.facebook-feed {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #333;
+}
+
+.facebook-header {
+  background: #4267B2;
+  color: #fff;
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.facebook-content {
+  padding: 0.75rem;
+}
+
+.facebook-post {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.facebook-image {
+  width: 100%;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.facebook-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
