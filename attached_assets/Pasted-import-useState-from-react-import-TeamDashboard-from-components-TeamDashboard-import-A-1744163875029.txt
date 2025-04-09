@@ -1,0 +1,118 @@
+import { useState } from 'react';
+import TeamDashboard from './components/TeamDashboard';
+import AdminDashboard from './components/AdminDashboard';
+import PublicDisplay from './components/PublicDisplay';
+import './styles/app.css';
+import MapInteractive from './components/MapInteractive';
+
+const demoTeams = [
+  {
+    name: 'Bébittes moniteur',
+    code: 'TEAM01',
+    captain: 'Mishell Gauthier',
+    email: 'michel.gauthier.104@facebook.com',
+    phone: '418-555-0001',
+    score: 82,
+    logo: '',
+  },
+  {
+    name: 'Bestioles monitrice',
+    code: 'TEAM02',
+    captain: 'Sandra Brasseur Jeffrey',
+    email: 'sandra.b.jeffrey@facebook.com',
+    phone: '418-555-0002',
+    score: 62,
+    logo: '',
+  },
+  {
+    name: 'Shipshaw B&C',
+    code: 'TEAM03',
+    captain: 'Véronique Jacques',
+    email: 'orev.jack@facebook.com',
+    phone: '418-555-0003',
+    score: 60,
+    logo: '',
+  },
+  {
+    name: 'Barbus',
+    code: 'TEAM04',
+    captain: 'Karen Bouchard',
+    email: 'sadio.simaga@facebook.com',
+    phone: '418-555-0004',
+    score: 59,
+    logo: '',
+  },
+  {
+    name: 'Chiens de Brosse',
+    code: 'TEAM05',
+    captain: 'Sylvain Giroux',
+    email: 'girouxsly@facebook.com',
+    phone: '418-555-0005',
+    score: 59,
+    logo: '',
+  },
+];
+
+function App() {
+  const [accessCode, setAccessCode] = useState('');
+  const [accessGranted, setAccessGranted] = useState(false);
+  const [adminAccess, setAdminAccess] = useState(false);
+
+  const handleAccess = () => {
+    if (accessCode === 'ADMIN2025') {
+      setAdminAccess(true);
+    } else if (demoTeams.find((team) => team.code === accessCode)) {
+      setAccessGranted(true);
+    }
+  };
+
+  return (
+    <div className="app">
+      {!accessGranted && !adminAccess ? (
+        <div className="access-screen">
+          <h1>La Ride du Sasquatch - HUB du Sasquatch</h1>
+          <video controls width="500">
+            <source src="/videos/intro_sasquatch.mp4" type="video/mp4" />
+            Votre navigateur ne supporte pas la lecture vidéo.
+          </video>
+          <input
+            type="text"
+            placeholder="Entrer votre code d'accès..."
+            value={accessCode}
+            onChange={(e) => setAccessCode(e.target.value)}
+          />
+          <button onClick={handleAccess}>Accéder</button>
+          <p className="admin-hint">Code admin : <code>ADMIN2025</code></p>
+          <footer>
+            <h3>Merci à nos commanditaires :</h3>
+            <ul className="sponsors">
+              <li>RPM Harley-Davidson</li>
+              <li>Microbrasserie Riverbend</li>
+              <li>Fromagerie Boivin</li>
+              <li>JoHell Kodak</li>
+              <li>P. Procyk | Humain à tout faire</li>
+              <li>Aglaé Gagnon Graphiste</li>
+              <li>A&W Arvida</li>
+              <li>Sports VL</li>
+              <li>Domaine Le Cageot</li>
+              <li>Et tous les autres partenaires incroyables!</li>
+            </ul>
+          </footer>
+        </div>
+      ) : adminAccess ? (
+        <>
+          <AdminDashboard teams={demoTeams} />
+          <MapInteractive />
+        </>
+      ) : (
+        <>
+          <TeamDashboard code={accessCode} teams={demoTeams} />
+          <MapInteractive />
+        </>
+      )}
+      <PublicDisplay teams={demoTeams} />
+    </div>
+  );
+}
+
+export default App;

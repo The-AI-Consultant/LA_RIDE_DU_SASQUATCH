@@ -1,0 +1,90 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import './MapInteractive.css';
+
+const challenges = [
+  {
+    name: 'Départ – RPM Harley-Davidson',
+    description: 'Photo de départ devant RPM H-D',
+    coords: [48.4175, -71.0591],
+    type: 'défi'
+  },
+  {
+    name: 'Cornhole – Roco Bar',
+    description: 'Lancer de poches chez Pascal au Roco',
+    coords: [48.4305, -71.0568],
+    type: 'défi'
+  },
+  {
+    name: 'Cerceau – A&W Arvida',
+    description: 'Défi du cerceau synchronisé',
+    coords: [48.4128, -71.0662],
+    type: 'défi'
+  },
+  {
+    name: 'Photo officielle – Mont Jacob',
+    description: 'Votre plus beau sourire officiel avec le photographe',
+    coords: [48.4299, -71.0577],
+    type: 'photo'
+  },
+  {
+    name: 'Yoga Ball – Gym',
+    description: 'Défi d’équilibre et de folie',
+    coords: [48.4201, -71.0499],
+    type: 'défi'
+  },
+  {
+    name: 'Plage – Jonquière',
+    description: 'Photo originale sur le sable',
+    coords: [48.4165, -71.0300],
+    type: 'photo'
+  },
+];
+
+const iconDefi = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/616/616408.png',
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+  popupAnchor: [0, -32],
+});
+
+const iconPhoto = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/685/685655.png',
+  iconSize: [28, 28],
+  iconAnchor: [14, 28],
+  popupAnchor: [0, -28],
+});
+
+export default function MapInteractive() {
+  return (
+    <div className="map-container">
+      <h2>Carte interactive des défis</h2>
+      <MapContainer center={[48.418, -71.060]} zoom={12} scrollWheelZoom={true} style={{ height: '500px', width: '100%' }}>
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
+          attribution="&copy; OpenStreetMap contributors"
+        />
+        {challenges.map((defi, idx) => (
+          <Marker
+            position={defi.coords}
+            icon={defi.type === 'photo' ? iconPhoto : iconDefi}
+            key={idx}
+          >
+            <Popup>
+              <strong>{defi.name}</strong>
+              <br />
+              {defi.description}
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+
+      <div className="legend">
+        <h3>Légende</h3>
+        <p><img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" width="24" /> Défi actif</p>
+        <p><img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" width="22" /> Lieu photo</p>
+      </div>
+    </div>
+  );
+}

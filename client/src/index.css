@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Main content padding for fixed navbar */
+.main-content {
+  padding-top: 4rem; /* 64px */
+}
+
+/* Map container specific adjustment */
+.map-container {
+  padding-top: 5rem;
+  height: calc(100vh - 5rem);
+}
+
+/* Contact page adjustment */
+.container {
+  padding-top: 5rem;
+}
+
+/* Fix for menu flickering/shaking */
+.rdp-vhidden {
+  visibility: hidden;
+}
+
+/* Fix navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+nav * {
+  animation: none !important;
+  backface-visibility: visible !important;
+  perspective: none !important;
+}
+
+nav a, nav button {
+  transition: background-color 0.15s ease !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+
+/* Ensure tabs don't cause layout shifts */
+[role="tablist"] {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: none !important;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+[role="tab"] {
+  transition: background-color 0.15s ease !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  backface-visibility: hidden;
+}
+
+/* Fix mobile navigation */
+.mobile-navigation-fix * {
+  transition: none !important;
+}
+
+/* Fix images */
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Animation for interactive elements */
+.hover-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+.hover-shadow {
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Improved card and container styles */
+.content-card {
+  @apply bg-card rounded-lg shadow-md overflow-hidden hover-shadow;
+}
+
+.content-section {
+  @apply p-6 md:p-8 rounded-lg mb-8 bg-muted/50;
+}
+
+/* Custom form styles */
+.form-container {
+  @apply max-w-md w-full mx-auto bg-card p-6 rounded-lg shadow-lg;
+}
+
+.form-input {
+  @apply w-full p-3 border border-input rounded-md bg-background mb-4 focus:ring-2 focus:ring-primary focus:outline-none;
+}
+
+.form-submit {
+  @apply w-full py-3 bg-primary text-primary-foreground font-medium rounded-md transition hover:bg-primary/90;
+}
+
+/* Interactive button hover */
+.btn-interactive {
+  @apply relative overflow-hidden transition-all duration-300 bg-primary text-primary-foreground;
+}
+
+.btn-interactive::after {
+  content: '';
+  @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300 rounded-md;
+}
+
+.btn-interactive:hover::after {
+  @apply opacity-20;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@layer base {
+  :root {
+    --background: 24 24% 11%;
+    --foreground: 40 43% 89%;
+
+    --card: 24 24% 11%;
+    --card-foreground: 40 43% 89%;
+
+    --popover: 24 24% 11%;
+    --popover-foreground: 40 43% 89%;
+
+    --primary: 44 87% 61%;
+    --primary-foreground: 24 24% 11%;
+
+    --secondary: 30 40% 36%;
+    --secondary-foreground: 40 43% 89%;
+
+    --muted: 24 15% 20%;
+    --muted-foreground: 40 20% 70%;
+
+    --accent: 30 40% 36%;
+    --accent-foreground: 40 43% 89%;
+
+    --destructive: 0 80% 50%;
+    --destructive-foreground: 40 43% 89%;
+
+    --border: 30 40% 36%;
+    --input: 30 40% 36%;
+    --ring: 44 87% 61%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] pt-14;
+  }
+}
+
+.app {
+  @apply min-h-screen flex flex-col pt-0;
+}
+
+/* Login and Intro page */
+.intro-screen {
+  @apply fixed inset-0 flex flex-col items-center p-4 md:p-8 bg-background/95 z-50;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.intro-content {
+  @apply bg-card p-6 rounded-lg shadow-xl max-w-4xl w-full text-center;
+}
+
+.intro-buttons {
+  @apply flex gap-4 justify-center mt-6;
+}
+
+.intro-video-container {
+  @apply mb-6;
+}
+
+.intro-video {
+  @apply max-w-full rounded-lg shadow-lg;
+}
+
+/* Access screen */
+.access-screen {
+  @apply flex flex-col items-center justify-center min-h-screen p-4;
+}
+
+.access-screen h1 {
+  @apply text-3xl font-bold mb-6 text-primary;
+}
+
+.access-screen input {
+  @apply px-4 py-2 w-full max-w-md mb-4 border border-input rounded-md bg-background text-foreground;
+}
+
+.access-screen button {
+  @apply px-6 py-2 bg-primary text-primary-foreground font-medium rounded-md transition hover:bg-primary/90 w-full max-w-md;
+}
+
+.error-message {
+  @apply text-destructive mb-4;
+}
+
+.admin-hint {
+  @apply text-sm text-muted-foreground mt-2;
+}
+
+/* Sponsors */
+.sponsors {
+  @apply flex flex-wrap gap-4 justify-center mt-4 mb-8;
+}
+
+.sponsors li {
+  @apply inline-block px-3 py-1 bg-muted rounded-md text-sm cursor-pointer hover:bg-accent hover:text-accent-foreground transition;
+}
+
+/* Public display and social feed area */
+.public-display {
+  @apply p-4;
+}
+
+.public-display-container {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.leaderboard {
+  @apply bg-card p-4 rounded-lg shadow;
+}
+
+.social-feed {
+  @apply bg-card p-4 rounded-lg shadow;
+}
+
+.team-card {
+  @apply bg-muted p-4 rounded-lg mb-4 flex items-center justify-between;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px) rotate(1deg);
+  box-shadow: 0 8px 20px rgba(244, 197, 66, 0.2);
+}
+
+.team-rank {
+  @apply text-lg font-bold mr-2 text-primary;
+}
+
+.photo-gallery {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4;
+}
+
+.photo-item {
+  @apply relative overflow-hidden rounded-lg bg-muted aspect-square;
+}
+
+.photo-item img {
+  @apply object-cover w-full h-full;
+}
+
+/* Map Component */
+.map-container {
+  @apply h-[600px] w-full rounded-lg overflow-hidden shadow-lg border border-border;
+}
